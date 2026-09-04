@@ -125,7 +125,7 @@ export default function Services() {
                             OUR PROCESS
                         </p>
 
-                        <h2 className="text-4xl font-bold text-blue-950 mt-2">
+                        <h2 className="text-4xl font-bold text-white mt-2">
                             How We Work
                         </h2>
 
