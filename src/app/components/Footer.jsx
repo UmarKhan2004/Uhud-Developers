@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FaPhone, FaEnvelope, FaInstagram, FaFacebook } from 'react-icons/fa'
 export default function Footer() {
     return (
-        <footer className=" bg-slate-950">
+        <footer className=" bg-black ">
             {/*Footer Content*/}
             <div className="flex flex-col gap-10 md:flex-row md:justify-between">
                 <div className="flex flex-col gap-8   max-w-[40vw] ml-6 ">
