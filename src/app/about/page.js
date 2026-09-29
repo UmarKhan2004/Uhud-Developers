@@ -1,5 +1,5 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import Link from "next/link";
 import { 
   LuShieldCheck, 
@@ -123,7 +123,7 @@ export default function About() {
       <section className="px-6 py-12 max-w-7xl mx-auto">
         <div className="relative min-h-62.5 w-full rounded-xl overflow-hidden flex flex-col justify-center px-8 md:px-16">
           <img src="architecture.jpg" alt="Architecture" className="absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/60 to-transparent" />
           <div className="relative z-10 flex flex-col items-start gap-3">
             <h2 className="text-white text-2xl md:text-3xl font-bold">Have a Project in Mind?</h2>
             <p className="text-white/80">Let's build something great</p>

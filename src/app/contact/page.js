@@ -1,9 +1,51 @@
 'use client'
 import { LuMapPin, LuPhoneCall, LuMail, LuSend } from "react-icons/lu";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import { useState } from "react";
 
 export default function Contact() {
+  const [loading,setLoading]=useState(false)
+  const [formData,setFormData]=useState({
+    name:"",
+    email:"",
+    phone:"",
+    message:""
+  })
+  const handleChange=(e)=>{
+    setFormData({
+      ...formData,
+    [e.target.name]:e.target.value
+    })
+  }
+ const handleSubmit=async(e)=>{
+  e.preventDefault()
+  setLoading(true)
+  try{
+
+  const response=await fetch("http://127.0.0.1:8000/uhudDev/inquiry/",{
+    method:"POST",
+    headers:{
+      "content-type":"application/json"
+    },
+    body:JSON.stringify(formData),
+  })
+  if (response.ok){
+    const data=await response.json()
+    alert("Message sent successfully")
+     setFormData({name:"",email:"",phone:"",message:""})
+  }else{
+    alert("something went wrong")
+  }
+ }
+ catch(error){
+console.error("Submission error",error)
+alert("Network problem please try again later")
+ }finally{
+  setLoading(false)
+ 
+ }
+}
   return (
     <div className="bg-black text-white min-h-screen flex flex-col justify-between">
       <Navbar />
@@ -22,13 +64,16 @@ export default function Contact() {
               </p>
             </div>
 
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wider">
                   Name
                 </label>
                 <input
+                onChange={handleChange}
                   type="text"
+                  value={formData.name}
+                  name="name"
                   placeholder="Your Name"
                   className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-white focus:outline-none focus:border-orange-500 transition-colors"
                 />
@@ -40,6 +85,9 @@ export default function Contact() {
                 </label>
                 <input
                   type="email"
+                  value={formData.email}
+                  name="email"
+                  onChange={handleChange}
                   placeholder="Your Email"
                   className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-white focus:outline-none focus:border-orange-500 transition-colors"
                 />
@@ -50,7 +98,10 @@ export default function Contact() {
                   Phone Number
                 </label>
                 <input
+                value={formData.phone}
                   type="text"
+                  name="phone"
+                  onChange={handleChange}
                   placeholder="Your Number"
                   className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-white focus:outline-none focus:border-orange-500 transition-colors"
                 />
@@ -61,7 +112,10 @@ export default function Contact() {
                   Message
                 </label>
                 <textarea
+                onChange={handleChange}
                   rows={4}
+                  name="message"
+                  value={formData.message}
                   placeholder="Your Message"
                   className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-white focus:outline-none focus:border-orange-500 transition-colors resize-none"
                 />

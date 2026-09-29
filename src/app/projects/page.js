@@ -1,8 +1,8 @@
 'use client'
 import Link from "next/link";
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 import { useState } from "react";
-import Footer from "../components/Footer";
+import Footer from "../../components/Footer";
 
 const categories = ["All Projects", "Residential", "Commercial", "Renovation", "Ongoing"];
 

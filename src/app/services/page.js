@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 import { FaArrowRight, FaArrowDown } from 'react-icons/fa';
 import { FaHome, FaBuilding, FaPaintRoller, FaDraftingCompass, FaHardHat, FaComments } from "react-icons/fa";
-import Footer from "../components/Footer";
+import Footer from "../../components/Footer";
 
 export default function Services() {
     const services = [
